@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="sty.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+	
+<!--  	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<meta name="google-signin-scope" content="profile email">
+	<meta name="google-signin-client_id"
+		content="283855621770-v2itsi6vqp72n1kvngvgbejtvjqgeuak.apps.googleusercontent.com">-->
+</head>
+  <body>
+    <form action="index.html" class="login-form ">
+        <h1>Login</h1>
+       
+        <div class="txt"> 
+            <input type="text"> 
+            <span data-placeholder="Username"></span>   
+        </div>
+
+        <div class="txt"> 
+            <input type="password">  
+            <span data-placeholder="Password"></span>   
+        </div>
+
+        
+        <input type="submit" class="logbtn" value="Login">
+      <!--  <div class="Loginwith">
+            <div class="textloginwith">
+              Login with:
+            </div>
+            <div class="icongooggle">
+                  <div class="ggdetail"></div>
+            </div>
+        </div>-->
+        <div class="logingg">
+          <div class="google" >
+            <button id="gg" ><img src="image/icons8.png" alt=""></button>
+          </div>
+          <div class="face">
+            <button ><img src="image/icons8_facebook.png" alt=""></button>                                                                                         
+          </div>
+        </div>
+
+
+        <div class="Dangky">
+
+          <button type="submit" class="dangky">Đăng ký tài khoản?</button>
+
+
+        </div>
+
+
+      </form>
+ 
+      <script  src="animation.js"> </script>
+      <script>
+      function onSignIn(googleUser) {
+          var profile = googleUser.getBasicProfile();
+          console.log('ID: ' + profile.getId());
+          console.log('Name: ' + profile.getName());
+          console.log('Image URL: ' + profile.getImageUrl());
+          console.log('Email: ' + profile.getEmail());
+          console.log('id_token: ' + googleUser.getAuthResponse().id_token);
+
+         //do not post above info to the server because that is not safe.
+         //just send the id_token
+
+          var redirectUrl = 'login';
+          //using jquery to post data dynamically
+          var form = $('<form action="' + redirectUrl + '" method="post">' +
+                              '<input type="text" name="id_token" value="' +
+                               googleUser.getAuthResponse().id_token + '" />' +
+                                                                    '</form>');
+        $('body').append(form);
+        form.submit();
+        }
+  
+      
+      </script>
+  </body>
+</html>
